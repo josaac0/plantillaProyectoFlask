@@ -1,0 +1,50 @@
+Descargar e instalar python version 3.12.4 en windows como administrador
+https://www.python.org/downloads/
+##Abrir cmd y verificar que este instalado python
+python --version
+py --version
+##verificar pip
+pip --version
+pip -v
+##actualizar pip 
+python -m pip install --upgrade pip
+##en caso de error
+python -m ensurepip --upgrade
+##instalar entorno virtual aislado
+pip install virtualenv
+##en cmd posicionarse en Escritorio y crear una carpeta llamada test
+mkdir test
+##moverse dentro del directorio
+cd test
+##crear entorno virtual
+virtaalenv venv
+##activar entorno virtual aislado
+venv\Scripts\activate.bat
+venv\Scripts\activate 
+##instalar dependencia para inyectar variables de entorno a la ejecucion de flask
+pip install python-dotenv
+pip install Flask
+##crear un archivo main y un flaskenv
+touch main.py .flaskenv
+##abrir vsc en esa posicion
+code .
+## dentro del main copiar el sig codigo
+from flask import Flask
+
+app = Flask(__name__)
+@app.route("/")
+def hello():
+    return "Hello, World!"
+
+##dentro de .flaskenv copiar el sig codigo
+export FLASK_APP=main
+export FLASK_DEBUG=1
+export FLASK_RUN_PORT=5000
+
+## Instalar dependencias
+pip install -r requeriments.txt
+
+##Levantarflask app en terminal cmd
+flask run
+
+##Verificar en el navegador si aparece hello world en la url localhost:5000
